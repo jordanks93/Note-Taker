@@ -1,0 +1,23 @@
+{
+  "name": "note-taker",
+  "version": "1.0.0",
+  "description": "note taker application. saves notes to server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jordanks93/Note-Taker.git"
+  },
+  "keywords": [
+    "note",
+    "taker"
+  ],
+  "author": "Jordan Stuckman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jordanks93/Note-Taker/issues"
+  },
+  "homepage": "https://github.com/jordanks93/Note-Taker#readme"
+}
