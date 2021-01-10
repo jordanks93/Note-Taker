@@ -13,6 +13,7 @@ module.exports = (app) => {
     res.json(db);
   });
 
+
   // POST Request
   app.post("/api/notes", (req, res) => {
 
@@ -26,14 +27,15 @@ module.exports = (app) => {
 
     // save note to db.json file
     fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
-      if(err) {
+      if (err) {
         throw err;
       } else
-          res.json(db);
-          console.log(db);
-          console.log("Note Posted");
+        res.json(db);
+      console.log(db);
+      console.log("Note Posted");
     });
   });
+
 
   // DELETE Request
   app.delete("/api/notes/:id", (req, res) => {
@@ -47,12 +49,12 @@ module.exports = (app) => {
     });
     // save changes to db.json
     fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
-      if(err) {
+      if (err) {
         throw err;
       } else
-          res.json(db);
-          console.log(db);
-          console.log("Deleted Note");
+        res.json(db);
+      console.log(db);
+      console.log("Deleted Note");
     });
   });
 };
