@@ -4,7 +4,7 @@
   "description": "note taker application. saves notes to server.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/jordanks93/Note-Taker/issues"
   },
-  "homepage": "https://github.com/jordanks93/Note-Taker#readme"
+  "homepage": "https://github.com/jordanks93/Note-Taker#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
