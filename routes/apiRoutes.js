@@ -31,7 +31,28 @@ module.exports = (app) => {
       } else
           res.json(db);
           console.log(db);
+          console.log("Note Posted");
     });
   });
 
+  // DELETE Request
+  app.delete("/api/notes/:id", (req, res) => {
+    let id = req.params.id;
+    console.log(req.params);
+    // splice note that was deleted from the db array
+    db.splice(id - 1, 1);
+    // reset id for each note in the array
+    db.forEach((obj, i) => {
+      obj.id = i + 1;
+    });
+    // save changes to db.json
+    fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
+      if(err) {
+        throw err;
+      } else
+          res.json(db);
+          console.log(db);
+          console.log("Deleted Note");
+    });
+  });
 };
