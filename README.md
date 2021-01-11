@@ -22,7 +22,7 @@
   ## Contributions
   Contact me by email or just submit a pull request.
   ## Testing
-  After running node server.js. In your browser enter localhost:3000 to see if the program is working correctly.
+  After running node server.js. In your browser enter localhost:3001 to see if the program is working correctly.
   ## Questions
   If you have any questions or feedback, contact me at jordanks93@gmail.com.
   My github profile is jordanks93.
