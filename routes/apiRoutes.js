@@ -1,5 +1,5 @@
-// LOAD DATA
-// links routes to data sources
+// DEPENDENCIES
+// load file system module and link to db.json
 const db = require("../db/db.json");
 const fs = require("fs");
 
