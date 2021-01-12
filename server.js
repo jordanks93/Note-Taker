@@ -23,8 +23,8 @@ require("./routes/htmlRoutes")(app);
 // starts the server
 app.listen(PORT, (err) => {
   if(err) {
-    throw(err);
     console("Server setup failed.")
+    throw(err);
   } else {
     console.log("App listening on PORT: " + PORT);
   }
