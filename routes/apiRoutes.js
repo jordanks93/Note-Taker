@@ -3,6 +3,21 @@
 const db = require("../db/db.json");
 const fs = require("fs");
 
+const setIDs = () => {
+  db.forEach((obj, i) => {
+    obj.id = i + 1;
+  });
+};
+
+const writeFile = (res) => {
+  fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
+    if (err) {
+      throw err;
+    } else
+      res.json(db);
+      console.log(db);
+  });
+};
 
 // API Setup
 module.exports = (app) => {
@@ -21,41 +36,25 @@ module.exports = (app) => {
     db.push(req.body);
 
     // give unique id for each note to identify for deletion
-    db.forEach((obj, i) => {
-      obj.id = i + 1;
-    });
+    setIDs();
 
     // save note to db.json file
-    fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
-      if (err) {
-        throw err;
-      } else
-        res.json(db);
-      console.log(db);
-      console.log("Note Posted");
-    });
+    writeFile(res);
+    console.log("Note Posted");
   });
 
 
   // DELETE Request
   app.delete("/api/notes/:id", (req, res) => {
     // stores correct array position for id selected for deletion
-    let id = req.params.id - 1;
+    let idArrPosition = req.params.id - 1;
     console.log(req.params);
     // splice note that was selected to be deleted from the db array
-    db.splice(id, 1);
+    db.splice(idArrPosition, 1);
     // reset id for each note in the array
-    db.forEach((obj, i) => {
-      obj.id = i + 1;
-    });
+    setIDs();
     // save changes to db.json
-    fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
-      if (err) {
-        throw err;
-      } else
-        res.json(db);
-      console.log(db);
-      console.log("Deleted Note");
-    });
+    writeFile(res);
+    console.log("Deleted Note");
   });
 };
