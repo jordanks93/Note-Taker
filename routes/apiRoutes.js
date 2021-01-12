@@ -39,10 +39,11 @@ module.exports = (app) => {
 
   // DELETE Request
   app.delete("/api/notes/:id", (req, res) => {
-    let id = req.params.id;
+    // stores correct array position for id selected for deletion
+    let id = req.params.id - 1;
     console.log(req.params);
     // splice note that was selected to be deleted from the db array
-    db.splice(id - 1, 1);
+    db.splice(id, 1);
     // reset id for each note in the array
     db.forEach((obj, i) => {
       obj.id = i + 1;
