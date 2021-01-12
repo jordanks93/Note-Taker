@@ -6,15 +6,13 @@ const path = require("path");
 module.exports = (app) => {
 
   // GET Requests
-
-  // routes to page to make notes
+  // routes to notes page
   app.get("/notes", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/notes.html"));
   });
 
-  // routes to get started page
+  // routes to "get started" page
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
-
 };

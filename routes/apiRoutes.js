@@ -3,13 +3,15 @@
 const db = require("../db/db.json");
 const fs = require("fs");
 
+// used to set IDs for stored note objects
 const setIDs = () => {
   db.forEach((obj, i) => {
     obj.id = i + 1;
   });
 };
 
-const writeFile = (res) => {
+// used to save notes to db.json
+const saveToFile = (res) => {
   fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
     if (err) {
       throw err;
@@ -21,13 +23,12 @@ const writeFile = (res) => {
 
 // API Setup
 module.exports = (app) => {
-
+  
   // GET Request
   // read the db.json file and return saved notes
   app.get("/api/notes", (req, res) => {
     res.json(db);
   });
-
 
   // POST Request
   app.post("/api/notes", (req, res) => {
@@ -39,10 +40,9 @@ module.exports = (app) => {
     setIDs();
 
     // save note to db.json file
-    writeFile(res);
+    saveToFile(res);
     console.log("Note Posted");
   });
-
 
   // DELETE Request
   app.delete("/api/notes/:id", (req, res) => {
@@ -54,7 +54,7 @@ module.exports = (app) => {
     // reset id for each note in the array
     setIDs();
     // save changes to db.json
-    writeFile(res);
+    saveToFile(res);
     console.log("Deleted Note");
   });
 };
